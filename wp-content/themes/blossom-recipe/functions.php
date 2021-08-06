@@ -88,16 +88,23 @@ if( blossom_recipe_is_delicious_recipe_activated() ){
     require get_template_directory() . '/inc/recipe-functions.php';    
 }
 
+add_action('elementor_pro/forms/new_record', function($record, $ajax_handler)
+{
+	$raw_fields = $record->get('fields');
+	$fields = [];
+	
+	foreach($raw_fields as $id => $field)
+	{
+		$fields[$id] = $field['value'];
+	}
+	
+	global $wpdb;
+	$output['success'] = $wpdb->insert('demonstracao1', array('Nome' => $fields['Nome']));
+	
+	$ajax_handler->add_response_data(true, $output);
+}, 10, 2);
 
-function ejecutarPHP($html){
-   if(strpos($html, "<"."?php") !== false){
-      ob_start();
-      eval("?".">".$html);
-      $html = ob_get_contents();
-      ob_end_clean();
-   }
-   return $html;
-}
-add_filter('widget_text', 'ejecutarPHP', 100);
 
 ?>
+
+
