@@ -1,7 +1,8 @@
 <?php
     include 'BancoDeDados.php';
     $nome = $_POST['Nome'];
-    $sql = "INSERT INTO demonstracao (nome) values ('$nome')";
+    $imagem = $_POST['Imagem'];
+    $sql = "INSERT INTO demonstracao (nome, imagem) values ('$nome', '$imagem')";
     $conn -> query($sql);
     $conn -> close();
 ?>

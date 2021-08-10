@@ -12,10 +12,13 @@ echo "</style></head>";
 echo "<body>";
 
 echo "<div class=\"table_container\"><table>";
-echo "<tr><th style=\"padding-left:10px;\">ID</th><th>Nome</th></tr>";
-foreach ($result as $row) {
-	echo "<tr><td>" . $row->ID . "</td><td>" . $row->Nome . "</tr>";
+echo "<tr><th style=\"padding-left:10px;\">ID</th><th>Nome</th><th>Imagem</th></tr>";
+
+foreach ($result as $row)
+{
+	echo "<tr><td>" . $row->ID . "</td><td>" . $row->Nome . "<td><img src = ". $row->Imagem."></td></tr>";
 }
+
 echo "</table></div>";
 
 ?>
