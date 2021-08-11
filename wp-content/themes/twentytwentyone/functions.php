@@ -647,7 +647,11 @@ add_action('elementor_pro/forms/new_record', function( $record, $handler){
 		$fields[$id] = $field['value']; 
 	}
 	
-	wp_remote_post('http://localhost/WordPress-Teste/api/Criar.php', [
+	/*wp_remote_post('http://localhost/WordPress-Teste/api/Criar.php', [
+		'body' => $fields,
+	]);*/
+	
+	wp_remote_post('http://localhost/wordpress/api/Criar.php', [
 		'body' => $fields,
 	]);
 }, 10, 2);
